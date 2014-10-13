@@ -3118,7 +3118,7 @@ public class MessagingController implements Runnable {
                         return;
                     }
 
-                    MailReader.start(mApplication, message);
+                    MailReader.start(mApplication, message, account);
 
                     for (MessagingListener l : getListeners(listener)) {
                         l.loadMessageForViewHeadersAvailable(account, folder, uid, message);
