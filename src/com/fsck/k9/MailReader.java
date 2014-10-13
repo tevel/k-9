@@ -10,7 +10,12 @@ import com.fsck.k9.mail.store.LocalStore;
 import java.util.HashMap;
 
 /**
- * Created by user on 13/10/2014.
+ REPLY
+ DELETE
+ CANCEL
+ READ NEXT
+ READ PREVIOUS
+ COMPOSE NEW MESSAGE
  */
 public class MailReader extends UtteranceProgressListener {
 
