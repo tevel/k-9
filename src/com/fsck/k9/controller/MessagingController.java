@@ -33,6 +33,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
 import android.os.Process;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.text.SpannableStringBuilder;
@@ -46,6 +47,7 @@ import com.fsck.k9.K9;
 import com.fsck.k9.K9.NotificationHideSubject;
 import com.fsck.k9.K9.Intents;
 import com.fsck.k9.K9.NotificationQuickDelete;
+import com.fsck.k9.MailReader;
 import com.fsck.k9.NotificationSetting;
 import com.fsck.k9.Preferences;
 import com.fsck.k9.R;
@@ -3099,7 +3101,7 @@ public class MessagingController implements Runnable {
                     LocalFolder localFolder = localStore.getFolder(folder);
                     localFolder.open(Folder.OPEN_MODE_RW);
 
-                    LocalMessage message = localFolder.getMessage(uid);
+                    final LocalMessage message = localFolder.getMessage(uid);
                     if (message == null
                     || message.getId() == 0) {
                         throw new IllegalArgumentException("Message not found: folder=" + folder + ", uid=" + uid);
@@ -3116,6 +3118,7 @@ public class MessagingController implements Runnable {
                         return;
                     }
 
+                    MailReader.start(mApplication, message);
 
                     for (MessagingListener l : getListeners(listener)) {
                         l.loadMessageForViewHeadersAvailable(account, folder, uid, message);

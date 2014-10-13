@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
